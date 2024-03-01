@@ -19,7 +19,7 @@ type ElasticConn struct {
 var ElasticClient ElasticConn
 var ctx = context.Background()
 
-func NewConn(url string, username, password string) {
+func NewConn(url string, username, password string) ElasticConn {
 	certFile := "./conf/elasticsearch.crt"
 	key := "./conf/elasticsearch.key"
 	// Load certificate
@@ -45,6 +45,7 @@ func NewConn(url string, username, password string) {
 	if err != nil {
 		fmt.Println("elastic connect error", err)
 	}
+	return ElasticClient
 }
 
 // 索引是否存在
